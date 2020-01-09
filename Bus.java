@@ -1,16 +1,16 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Car extends Vehicle{
+public class Bus extends Vehicle{
 
-	public Car(int x, int y) {
+	public Bus(int x, int y) {
 		super(x, y);
-		width=60;
-		height=30;
+		width=120;
+		height=40;
 		speed=5;
 	}
 	public void paintMe(Graphics g) {
-		g.setColor(Color.BLUE);
+		g.setColor(Color.GREEN);
 		g.fillRect(x, y, width, height);
 	}
 

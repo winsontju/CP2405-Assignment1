@@ -1,49 +1,35 @@
-public class Road {
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.ArrayList;
 
-    String name;
-    int road_length;
-    Car vehicle;
+import javax.swing.JPanel;
 
-    trafficLight traffic_light;
-    Road Road_to_Road;
+public class Road extends JPanel {
 
-    Object [] pavement;
+	/**
+	 * Create the panel.
+	 */
+	final int laneHeight=120;
+	ArrayList<Vehicle> v=new ArrayList<Vehicle>();
+	public Road() {
+		super();
+	}
+	public void addVehicle(Vehicle vehicle) {
+		v.add(vehicle);
+	}
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, getWidth(), getHeight());
+		g.setColor(Color.WHITE);
+		for(int a=laneHeight;a<laneHeight*4;a=a+laneHeight) {
+			for(int b=0;b<getWidth();b+=40) {
+				g.fillRect(b, a, 30, 5);
+			}
+		}
+		for(int a=0;a<v.size();a++) {
+			v.get(a).paintMe(g);
+		}
+	}
 
-    boolean traffic_arrive = false;
-
-    public Road (String name, int road_length, Car vehicle, trafficLight trafficlight, Road Road_to_Road) {
-
-        this.name=name;
-        this.road_length =road_length;
-        this.vehicle=vehicle;
-
-        this.traffic_light =trafficlight;
-        this.Road_to_Road = Road_to_Road;
-
-        this.pavement =new Object[road_length];
-        pavement[0]=vehicle;
-        pavement[this.road_length -1]=trafficlight;
-    }
-
-    public void position_info(Car vehicle) {
-
-        if(vehicle.position<this.road_length) {
-
-            this.pavement[vehicle.position] = this.vehicle;
-        }
-        else if(vehicle.position==this.road_length){
-
-            if(traffic_light.color.equalsIgnoreCase("Green")) {
-
-                vehicle.position = 0;
-                vehicle.current_car_position = Road_to_Road;
-                traffic_arrive = true;
-            }
-
-            else {
-
-                vehicle.position -= 1;
-            }
-        }
-    }
 }
