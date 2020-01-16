@@ -7,7 +7,7 @@ public class Bus extends Vehicle{
 		super(x, y);
 		width=120;
 		height=40;
-		speed=5;
+		speed=7;
 	}
 	public void paintMe(Graphics g) {
 		g.setColor(Color.GREEN);
