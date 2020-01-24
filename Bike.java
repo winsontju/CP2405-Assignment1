@@ -1,23 +1,22 @@
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
+//Inherits parent class Vehicle
 public class Bike extends Vehicle{
 
+	//Set Bike dimension and speed
 	public Bike(int x, int y) {
 		super(x, y);
-		width=30;
+		width=15;
 		height=10;
 		speed=20;
 	}
-	public void paintMe(Graphics g) {
-		g.setColor(Color.RED);
-		g.fillRect(x, y, width, height);
+
+	//Paint Bike
+	public void paintMe(Graphics bike) {
+		bike.setColor(Color.RED);
+		bike.fillRect(x, y, width, height);
 	}
+	
 
 }
